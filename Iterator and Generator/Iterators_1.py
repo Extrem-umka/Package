@@ -20,14 +20,17 @@ class FlatIterator:
         return self
 
     def __next__(self):
-        self.inner_list_cursor += 1
-        if self.inner_list_cursor == len(self.list_of_list[self.outer_list_cursor]):
-            iter(self)
-            self.outer_list_cursor += 1
-        if self.outer_list_cursor == self.list_len:
-            raise StopIteration
+        if self.inner_list_cursor < len(self.list_of_list[self.outer_list_cursor]):
             self.inner_list_cursor += 1
-        return self.list_of_list[self.outer_list_cursor][self.inner_list_cursor]
+            return self.list_of_list[self.outer_list_cursor][self.inner_list_cursor - 1]
+        else:
+            self.inner_list_cursor = 1
+            self.outer_list_cursor += 1
+            if self.outer_list_cursor < self.list_len:
+                return self.list_of_list[self.outer_list_cursor][self.inner_list_cursor - 1]
+            else:
+                raise StopIteration
+
 
 
 for item in FlatIterator(list_of_lists):
