@@ -16,6 +16,7 @@ from pprint import pprint
 import csv
 from pprint import pprint
 
+
 def read_csv():
   with open("phonebook_raw.csv") as f:
     rows = csv.reader(f, delimiter=",")
@@ -61,9 +62,11 @@ def union(contacts_list):
           i[6] = j[6]
   contacts_list_up = list()
   for cont in contacts_list:
-    if cont not in contacts_list_up:
+    if cont not in contacts_list_up and len(cont) == 7:
       contacts_list_up.append(cont)
   return contacts_list_up
+
+
 
 # # TODO 2: сохраните получившиеся данные в другой файл
 # код для записи файла в формате CSV
@@ -72,6 +75,7 @@ def write_csv(contacts_list):
     datawriter = csv.writer(f, delimiter=',')
     # Вместо contacts_list подставьте свой список
     datawriter.writerows(contacts_list)
+
 
 if __name__ == '__main__':
   contrlist = read_csv()
