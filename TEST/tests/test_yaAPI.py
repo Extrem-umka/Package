@@ -5,7 +5,7 @@ from ya_API import YandexDisk
 
 
 def test_dir():
-    TOKEN = "y0_AgAAAAAZp6RgAADLWwAAAADMjkKCEB6IGR2WRL6MQbzh6sI8YVzF99Q"
+    TOKEN = "*ввести свой токен"
     ya = YandexDisk(token=TOKEN)
     path = 'test_'
     result = ya.dir(path)
